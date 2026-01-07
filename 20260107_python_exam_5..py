@@ -148,30 +148,68 @@ print("====================================================")
 # 문제1 : 두개의 숫자를 연결해서 새로운 문장을 만들어주세요.
 a = 10
 b = 20
-c = (str(a)+str(b))
-print(c)
+# c = (str(a)+str(b))
+# print(c)
+print(str(a)+str(b))
 # 출력 => 1020
 
 # 문제2 : 두개의 숫자문장를 더해서 새 정수를 만들어주세요.
 a = '3'
 b = '6'
-a = int(a)
-b = int(b)
-print(a + b)
+# a = int(a)
+# b = int(b)
+print(int(a) + int(b))
 # 출력 9
 
 # 문제3 : 두개의 숫자문장를 더해서 새 실수를 만들어주세요.
 a = '3.1'
 b = '6.1'
-a = float(a)
-b = float(b)
-print(a + b)
+# a = float(a)
+# b = float(b)
+print(float(a) + float(b))
 # 출력 9.2
 
 # 문제4 : 2개 실수문장을 정수화 하여 더해주세요.
 a = '3.1'
 b = '6.1'
-a = int(float(a))
-b = int(float(b))
-print(a+b)
+# a = int(float(a))
+# b = int(float(b))
+print(int(float(a))+int(float(b)))
 # 출력 9
+
+print("====================================================")
+## List 객체 정의
+
+# 나이 10,20,30 살은 변수에 다 담지 못한다.
+age = 10
+age = 20
+age = 30
+# 이렇게 age 변수에 담아도 마지막에 대입한 30의 값만 존재한다.
+# 변수에 값을 여러개 넣을수 있게 만들어진 객체가 List 다
+
+ages = [] # 빈 리스트 객체를 하나 만들었다.
+# 객체를 조종 할 수 있는 리모콘 ages라는 변수에 들어간다.
+
+ages2 = ages # ages 변수 안에 들어있는 리모콘이 복사가 되어서 ages2 변수에 들어간다.
+             # 객체는 여기서 1개다 ! 그저 ages 객체의 주소만 복사하여 가져다 쓰기에 객체는 1개!
+
+ages.append(10)
+ages.append(20)
+ages.append(30)
+
+print(ages)
+
+# append( ) 함수는 파이썬에서 리스트의 끝에 새로운 요소를 추가하는 메서드(함수)
+#      -> 추가 시 리스트의 끝(맨 마지막)에 추가가 된다.
+#리스트 생성
+fruits = ['apple','banana','cherry']
+print(fruits)
+fruits.append('orange')
+print(fruits)
+
+# 리스트 내 각 개별의 값을 가져오고 싶을때는 index로 불른다.
+# 리스트 객체 안에 요소 접근 
+print(fruits[0])
+print(fruits[1])
+print(fruits[2])
+print(fruits[3])
