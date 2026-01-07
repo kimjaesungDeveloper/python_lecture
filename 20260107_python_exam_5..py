@@ -13,11 +13,11 @@ def is_prime_number(num):
   #--------------------------------------
   # while문 방식
   i= 2
-  while i <=num:
+  while i < num:
     if num % i == 0:
       return False
     i+=1
-    return True
+  return True
     
 print(f"1은 소수입니다 : {is_prime_number(1)}")
 print(f"3은 소수입니다 : {is_prime_number(3)}")
@@ -47,3 +47,131 @@ while i<=1000:
     count +=1
   i+=1
 print(f"1~ 1000 사이 소수의 총갯수 입니다 : {count}")
+
+print("====================================================")
+#문제3 : 입력받은 숫자가 10이라고 할때 1부터 10 사이에 존재하는 모든 소수를 출력하는 함수 구현
+def print_1_to_n_prime_numbers(num1,num2):
+  i=num1
+  while i<=num2:
+    if is_prime_number(i):
+      print(f"{num1} ~ {num2} 사이 소수 : {i}")
+    i+=1
+  
+print_1_to_n_prime_numbers(1,10)
+
+print("====================================================")
+# 문제4 : 1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수 `get_1_to_n_prime_numbers_count` 를 구현해주세요.
+
+
+#1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수
+def get_1_to_n_prime_numbers_count(n):
+  #여기서 구현해주세요.
+  count = 0
+  i =1
+  while i<=n:
+    if is_prime_number(i):
+      count+=1
+    i+=1
+  return count
+  # i=1 
+  # while i<= n:
+  #   if i == 1:
+  #     count = 0
+  #   j=1
+  #   while j <= i :  
+  #     if i % j == 0:
+  #       break
+  #     j+=1
+  #   count += 1
+  #   i+=1
+  # return count
+
+number = 0
+
+number = 1000
+count = get_1_to_n_prime_numbers_count(number)
+print(f"1부터 {number}사이에 존재하는 소수의 개수 : {count}개\n")
+  # 출력 => 1부터 1000사이에 존재하는 소수의 개수 : 168개
+
+number = 2000
+count = get_1_to_n_prime_numbers_count(number)
+print(f"1부터 {number}사이에 존재하는 소수의 개수 : {count}개\n")
+  # 출력 => 1부터 2000사이에 존재하는 소수의 개수 : 303개
+
+print("====================================================")
+# 문제5 : 1부터 n 사이의 수 중에서 소수의 합을 반환하는 함수 `get_1_to_n_prime_numbers_sum` 를 구현해주세요.
+
+
+# 1부터 n 사이의 수 중에서 소수의 합 반환하는 함수
+def get_1_to_n_prime_numbers_sum(n):
+  # 구현
+  sum = 0
+  i =1
+  while i<=n:
+    if is_prime_number(i):
+      sum+=i
+    i+=1
+  return sum
+
+
+
+sum = 0
+number = 0
+
+number = 1000
+sum = get_1_to_n_prime_numbers_sum(number)
+print(f"1부터 {number}사이에 존재하는 소수의 개수 : {sum}개\n")
+  # 출력 => 1부터 1000사이에 존재하는 소수의 합 : 76127
+
+number = 2000
+sum = get_1_to_n_prime_numbers_sum(number)
+print(f"1부터 {number}사이에 존재하는 소수의 개수 : {sum}개\n")
+ # 출력 => 1부터 2000사이에 존재하는 소수의 합 : 277050
+
+print("====================================================")
+print("====================================================")
+## 자료 형변환
+
+# str( )  ->  인자로 들어온 값을 문자열로 변환 시켜서 반환 (정수,실수,boolean 가능)
+
+# chr( )  ->  인자로 들어온 x를 문자로 변환시켜서 반환
+#             캐릭터를 그것에 맞는 unicode(유니코드) 문자로 변환하여 반환
+
+# bool( ) ->  인자로 들어온 x를 bool 타입으로 변환시켜서 반환
+#             숫자의 경우(정수 실수 둘다)에는 0인지 0이 아닌지에 따라서 True,False가 결정 되고
+#             문자의 경우에는 문자열이 비었는지(empty), 비어있지 아닌지에 따라 True, False가 결정
+
+# int( ) ->   인자로들어온 x를 정수 타입으로 반환
+#             "123" 문자열 숫자는 변환 가능 하지만 , 한글은 불가능
+#             실수도 가능, boolean도 가능한데 True =1 , False = 0 으로 반환 해준다.
+
+# 문제1 : 두개의 숫자를 연결해서 새로운 문장을 만들어주세요.
+a = 10
+b = 20
+c = (str(a)+str(b))
+print(c)
+# 출력 => 1020
+
+# 문제2 : 두개의 숫자문장를 더해서 새 정수를 만들어주세요.
+a = '3'
+b = '6'
+a = int(a)
+b = int(b)
+print(a + b)
+# 출력 9
+
+# 문제3 : 두개의 숫자문장를 더해서 새 실수를 만들어주세요.
+a = '3.1'
+b = '6.1'
+a = float(a)
+b = float(b)
+print(a + b)
+# 출력 9.2
+
+# 문제4 : 2개 실수문장을 정수화 하여 더해주세요.
+a = '3.1'
+b = '6.1'
+a = int(float(a))
+b = int(float(b))
+print(a+b)
+# 출력 9
