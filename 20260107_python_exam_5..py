@@ -208,7 +208,7 @@ fruits.append('orange')
 print(fruits)
 
 # 리스트 내 각 개별의 값을 가져오고 싶을때는 index로 불른다.
-# 리스트 객체 안에 요소 접근 => 인덱스
+# 리스트 객체 안에 요소 접근 => 인덱스 : index는 0부터 시작한다.0
 print(fruits[0])
 print(fruits[1])
 print(fruits[2])
