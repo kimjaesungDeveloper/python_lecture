@@ -186,3 +186,8 @@ day = ["월", "화", "수", "목", "금"]
 # 삭제 할 대상이 없다면 Name Error 발생
 del day[day.index("금")]  # day[4]
 print(day)
+
+## python for문 설명
+# range(끝값)
+# range(시작,끝)
+# range(시작,끝,증가)
