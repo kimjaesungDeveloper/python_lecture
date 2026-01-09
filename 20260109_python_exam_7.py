@@ -72,6 +72,14 @@
 # lstrip() 을 사용했을 때,
 #           >>> url.lstrip('https://')
 
+# .replace() = 문자열 바꾸기
+#  a = '저는 녹차를 좋아합니다.'
+#  a.replace('좋아','싫어')
+#  출력 >> 저는 녹차를 싫어합니다
+
+# .split() = 문자열 나누기 > 공백을 기준으로 문자열 나누어 리스트 반환
+#             특정값 기준으로 할시 ( ) 안에 값 입력하여 나누기
+
 print("====================================================")
 # 문제1 : for문으로 1부터 100까지 출력
 for i in range(100):
@@ -219,10 +227,74 @@ print("====================================================")
 # print(l)
 
 print("====================================================")
-# 문제 - 사용자에게 문장 1개를 입력받아서, strip 한 결과를,
-#       다시 ,를 기준으로 나눠주세요.
-print("문장을 입력해주세요:", end="")
-line = input()
-l = line.strip().split(",")
+# 문제3 - 사용자에게 문장 1개를 입력받아서, strip 한 결과를,
+#         다시 ,를 기준으로 나눠주세요.
+# print("문장을 입력해주세요:", end="")
+# line = input()
+# l = line.strip().split(",")
+# print(l)
 
-print(l)
+print("====================================================")
+# 문제4 - 사용자에게 숫자 2개를 입력받아서, 더한 결과를 출력해주세요.
+# str1 = input("숫자 입력 1 : ")
+# str2 = input("숫자 입력 2 : ")
+
+# sum = int(str1) + int(str2)
+# print(f"입력 숫자 더한 값 : {sum}")
+
+# s = input().strip().split(",")
+# print(s)
+# s[0] = int(s[0])
+# s[1] = int(s[1])
+# print(s[0] + s[1])
+
+print("====================================================")
+# 문제5 - 사용자에게 숫자 3개를 입력받아서,
+#        더한 결과를 출력해주세요. map, strip를 사용해주세요.
+
+"""
+map 함수 기본 문법
+ 
+map(function, iterable)
+
+function: 각 요소에 적용할 함수입니다.
+iterable: 함수를 적용할 데이터 집합입니다.
+ 
+map() 함수는 iterable의 각 요소에 대해 function 함수를 적용한 결과를 새로운
+iterator로 반환합니다. 
+이때, function 함수는 각 요소를 인자로 받아서 처리하며,
+함수의 반환값이 새로운 iterator의 각 요소가 됩니다.
+
+def square(x):
+    return x**2
+
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = map(square, numbers)
+print(list(squared_numbers))  # [1, 4, 9, 16, 25]
+
+map 함수 동작 원리
+map() 함수의 동작 원리는 다음과 같습니다.
+
+map() 함수가 호출되면, 입력으로 전달된 function 함수와 iterable 객체들을 파라미터로 받습니다.
+map() 함수는 가장 짧은 길이를 가진 iterable 객체의 길이만큼 function 함수를 반복적으로 적용합니다.
+function 함수는 각 iterable 객체에서 해당하는 인덱스의 요소들을 인자로 받아 처리합니다.
+function 함수의 실행 결과는 새로운 이터레이터 객체에 저장됩니다.
+map() 함수가 반환하는 값은 iterator 객체입니다.
+즉, map() 함수는 입력된 iterable 객체들의 각 요소를 하나씩 가져와 function 함수에 적용하고, 그 결과를 새로운 iterator 반환합니다.
+map() 함수는 generator 객체를 반환하며, iterator와 비슷한 역할을 합니다.
+
+"""
+
+# str = map(int, input("숫자 입력 3개 (,구분) : ").split(","))
+
+# print(list(str))
+# a = int(list(str)[0])
+# b = int(list(str)[1])
+# c = int(list(str)[2])
+# print(a + b + c)
+
+a, b, c = map(int, input().strip().split(","))
+print(f"a:{a}")
+print(f"b:{b}")
+print(f"c:{c}")
+print(int(a) + int(b) + int(c))
