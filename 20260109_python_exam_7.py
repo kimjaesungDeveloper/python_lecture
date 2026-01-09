@@ -37,6 +37,41 @@
 # for i in range(len(a)):
 #     print(f"a[{i}] : {a[i]}")
 
+# ===========================================================================
+# ===========================================================================
+## 문자열 내장함수
+
+# 1. .count() = 문자의 개수 세기
+#               a = '아이스아메리카노'
+#               a.count('아')  --> 출력 >> 2
+# 2. .find() = 변수에 내가 찾고 싶은 문자 위치를 찾을 때 사용
+#              값이 없을 경우 -1 출력 , 있을경우 문자의 index 번호 위치 출력
+# 3. .join() = 문자열 삽입 ( list or tuple 에서도 사용)
+#               각각의 문자를 쪼개서 사이에 특정값 삽입
+#              *.join('안','녕','하',세요')
+#              출력 >> 안*녕*하*세요
+# 4. .lower()= 대문자 문자열을 소문자 문자열로 바꿔준다.
+# 5. .upper()= 소문자 문자열을 대문자 문자열로 바꿔준다.
+# 6. .strip()= "문자열 양쪽공백 지우기" *.strip()
+#                 - .lstrip() : 왼쪽 공백
+#                 - .rstrip() : 오른쪽쪽 공백
+#               * strip () with chars : 원하는 문자를 입력하여 제거
+#                     'www.example.com'.strip('cmowz.')
+#                     'example'#
+
+# lstrip()_ 선행문자만 지울 때 사용함
+
+# >>> url = 'https://wikidocs.net'
+
+# # strip() 을 사용했을 때, net 의 't'도 생략됨.
+#             >>> url.strip('https://')
+# rstrip()_ 후행문자만 지울 때 사용함
+#             >>> url = 'https://wikidocs.net'
+#            >>> url.rstrip('.net')
+
+# lstrip() 을 사용했을 때,
+#           >>> url.lstrip('https://')
+
 print("====================================================")
 # 문제1 : for문으로 1부터 100까지 출력
 for i in range(100):
@@ -44,22 +79,28 @@ for i in range(100):
 
 print("====================================================")
 # 문제2 : for문으로 100부터 1까지 출력
-num = 100
-for i in range(num):
-    print(num - i)
+# num = 100
+# for i in range(num):
+#     print(num - i)
+for i in range(100, 0, -1):
+    print(i)
 
 print("====================================================")
 # 문제3 : for문으로 1부터 100 사이의 짝수만 출력
-for i in range(101):
-    if i % 2 == 0:
-        print(i)
+# for i in range(101):
+#     if i % 2 == 0:
+#         print(i)
+for i in range(0, 101, 2):
+    print(i)
 
 print("====================================================")
 # 문제4 : for문으로 100부터 1 사이의 짝수만 출력
 num = 100
-for i in range(num, 1, -1):
-    if i % 2 == 0:
-        print(i)
+# for i in range(num, 1, -1):
+#     if i % 2 == 0:
+#         print(i)
+for i in range(100, 0, -2):
+    print(i)
 
 print("====================================================")
 # 문제5 : for문으로 구구단 8단 출력
@@ -85,25 +126,103 @@ def is_prime_number(num):
     for i in range(2, num):
         if num % i == 0:
             return False
-        i += 1
     return True
 
 
 def get_1_to_n_prime_numbers_sum(num):
-    # 구현
     sum = 0
-    for i in range(num + 1):
+    for i in range(1, num + 1):
         if is_prime_number(i):
             sum += 1
     return sum
 
 
+# def get_1_to_n_prime_numbers_sum(num):
+#     sum = 0
+#     for i in range(num + 1):
+#         if num == 1:
+#             sum += 0
+#         for i in range(2, i):
+#             if num % i == 0:
+#                 sum += 0
+#         sum += 1
+#     return sum
+
+print(get_1_to_n_prime_numbers_sum(10))
 print(get_1_to_n_prime_numbers_sum(100))
 
 print("====================================================")
-# 문제 : 리스트에 2, 1, 5, 6, 7를 담고, for문으로 요소 전부 출력
-
+# 문제8 : 리스트에 2, 1, 5, 6, 7를 담고, for문으로 요소 전부 출력
 arr = [2, 1, 5, 6, 7]
-
 for i in arr:
     print(i)
+
+print(
+    "================================================================================"
+)
+print(
+    "================================================================================"
+)
+## print 출력문 문의 옵션
+# sep (separation) : 구분자로서 , 문자열 사이 구분값 입력
+#   - print('S','E','P', sep='@')
+#     출력 >>>>> S@E@P
+
+# end : 사용하면 그 뒤의 출력값과 이어서 출력한다.
+#       (즉, 줄바꿈을 하지 않게 된다.)
+#       end=' ' 사이에 무언가를 입력하게되면, sep와 비슷한 기능
+
+#       print("I like", end=" ")
+#       print("money")
+#       출력 >>>>> I like money
+
+# format : 특정 서식에 따라 문자를 출력할 수 있다.
+#          부분적으로 문자열을 바꾸어 반복적으로 출력할때 유용
+
+#           print("{0}월{1}일 입니다.".format(10,31))
+#           출력 >>>>> 10월31일 입니다.
+
+#           print("%s을 %d개 주세요."%("아이스크림", 10))
+#           출력 >>>>> 아이스크림을 10개 주세요.
+
+# Escape : 파이썬 문법을 escape(탈출)하여 출력할 수 있도록 도와주는 문자들
+#           \n  : 줄바꿈
+
+#           \t :   탭(TAP)
+
+#           \\  :  '\' 출력
+
+#           \'  :  작은따옴표 출력
+
+#           \"  :  큰따옴표 출력
+
+#           \b  :  백스페이스
+
+## input 입력문
+
+# print() => 출력
+# input() => 입력
+# print("입력 : ", end = '') # end = '' 줄바꿈 안함.
+# line = input()
+# print("line : ", line)
+
+print("====================================================")
+# 문제1 - 사용자에게 문장 1개를 입력받아서, 출력해주세요.
+# print(input("문장을 입력해주세요:"))
+
+print("====================================================")
+# 문제2 - 사용자에게 문장 1개를 입력받아서, ,를 기준으로 나눠주세요.
+
+# print("문장을 입력해주세요:", end="")
+# line = input()
+# l = line.split(",")
+# print(l)
+
+print("====================================================")
+# 문제 - 사용자에게 문장 1개를 입력받아서, strip 한 결과를,
+#       다시 ,를 기준으로 나눠주세요.
+print("문장을 입력해주세요:", end="")
+line = input()
+l = line.strip().split(",")
+
+print(l)
