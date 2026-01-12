@@ -10,6 +10,7 @@ def help():
     print("list : 데이터 조회")
     print("update : 데이터 수정")
     print("delete : 데이터 삭제")
+    print("exit : 프로그램 종료")
 
 
 def add():
@@ -59,18 +60,3 @@ while True:
     elif command == "exit":
         exit()
         break
-# command = input("명령어를 입력 해주세요 : help (입력) :")
-# help()
-# command = input("명령어를 입력 해주세요 : add (입력) : ")
-# add()
-# command = input("명령어를 입력 해주세요 : list (입력) : ")
-# listCheck()
-# command = input("명령어를 입력 해주세요 : update (입력) : ")
-# update()
-# command = input("명령어를 입력 해주세요 : list (입력) : ")
-# listCheck()
-# command = input("명령어를 입력 해주세요 : delete (입력) : ")
-# delete()
-# command = input("명령어를 입력 해주세요 : list (입력) : ")
-# listCheck()
-# command = input("명령어를 입력 해주세요 : exit (입력) : ")
