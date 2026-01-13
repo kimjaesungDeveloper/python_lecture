@@ -306,7 +306,7 @@ flag = 0
 def add_board():
     title = input("제목을 입력 해주세요 : ")
     content = input("내용을 입력 해주세요 : ")
-    board_list.append({"제목": {title}, "내용": {content}})
+    board_list.append({"제목": title, "내용": content})
     print("게시물이 등록 되었습니다.")
 
 
@@ -318,7 +318,7 @@ def list_board():
         print("==========  게시물 목록  =========")
         for i, board in enumerate(board_list):
             ty = board
-            print(ty)
+            print(board.items())
             print(f"번호 : {i+1}\t", end="")
             print(f"제목 : {board["제목"]} \n내용 : {board["내용"]}")
         print("=================================")
