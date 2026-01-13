@@ -43,7 +43,6 @@ def exit():
 
 while True:
     command = input("명령어를 입력 해주세요. :")
-
     if command not in ["help", "add", "list", "update", "delete", "exit"]:
         print("잘못 입력 하셨습니다. 명령어를 다시 입력 해주세요 : ")
         command = input("명령어를 입력 해주세요. help (입력) :")
