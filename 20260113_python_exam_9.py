@@ -290,13 +290,36 @@ print("=========================================================================
 # 번호 : 6    제목 : ccc
 # =================================
 
-board_list = []
+board1 = {
+    "번호": 1,
+    "제목": "소니의 축구교실",
+    "내용": "소니의 축구 강좌",
+    "작성자": "sony7",
+}
+board2 = {
+    "번호": 2,
+    "제목": "류뚱의 야구교실",
+    "내용": "류뚱의 야구 강좌",
+    "작성자": "ryu99",
+}
+board3 = {
+    "번호": 3,
+    "제목": "길동의 도술교술",
+    "내용": "길동의 도술 강좌",
+    "작성자": "hong123",
+}
+
+comment1 = {"번호": 1, "게시물번호": 1, "댓글": "축구 좋아요", "작성자": "hong123"}
+comment2 = {"번호": 2, "게시물번호": 1, "댓글": "야구 좋아요", "작성자": "ryu99"}
+comment3 = {"번호": 3, "게시물번호": 1, "댓글": "나도 좋아요", "작성자": "son7"}
+
+
+board_list = [board1, board2, board3]
+comment_list = [comment1, comment2, comment3]
 
 
 # 2026-01-14 게시글 정보 함수 추가
-def get_board_info_num():
-    num = int(input("게시물 번호를 입력 : "))
-
+def get_board_info_num(num):
     target = None
 
     for board in board_list:
@@ -307,9 +330,32 @@ def get_board_info_num():
     return target
 
 
+# 2026-01-14 게시글 댓글조회 함수 추가
+def detail_board_comment_list(num):
+
+    for comend in comment_list:
+        if comend["게시물번호"] == num:
+            print(f"작성자 :{comend["작성자"]} - 내용 : {comend["댓글"]}")
+
+
+# 2026-01-14 게시글 댓글달기 함수 추가
+def detail_board_comment_add(num):
+    comment = input("댓글 입력 : ")
+    comment_list.append(
+        {
+            "번호": len(comment_list) + 1,
+            "게시물번호": num,
+            "댓글": comment,
+            "작성자": login_id,
+        }
+    )
+    print("댓글 등록 완료!")
+
+
 # 2026-01-14 상세정보 추가
 def detail_Board():
-    board = get_board_info_num()
+    num = int(input("게시물 번호를 입력 : "))
+    board = get_board_info_num(num)
     print("==========  게시물 목록  ========")
     print(f"번호 :{board["번호"]}  ")
     print(f"제목 :{board["제목"]}  ")
@@ -318,11 +364,13 @@ def detail_Board():
     print("=================================")
     print("")
     print("----- 댓글 -----")
+    detail_board_comment_list(num)
 
 
 # 2026-01-14 삭제 추가
 def delete_Board():
-    board = get_board_info_num()
+    num = int(input("게시물 번호를 입력 : "))
+    board = get_board_info_num(num)
     if board != None:
         board_list.remove(board)
         print("게시물 삭제가 완료되었습니다.")
@@ -384,6 +432,29 @@ def list_board():
         print("=================================")
 
 
+# 게시물 명령 프로그램 함수
+def start_board():
+    # 게시판 시작
+    while True:
+        comm = input("게시판 명령어 입력 [설명:help 입력] : ")
+
+        if comm == "help":
+            list_help()
+        elif comm == "add":
+            add_board()
+        elif comm == "update":
+            update_Board()
+        elif comm == "delete":
+            delete_Board()
+        elif comm == "detail":
+            detail_Board()
+        elif comm == "list":
+            list_board()
+        elif comm == "exit":
+            print("게시물 프로그램 종료")
+            break
+
+
 # 유저 정보
 user1 = {"아이디": "hong123", "비밀번호": "1234", "이름": "홍길동"}
 user2 = {"아이디": "sony7", "비밀번호": "7777", "이름": "손흥민"}
@@ -395,35 +466,20 @@ user_list = [user1, user2, user3]
 # 프로그램 로그인 bool
 flag = 1
 
-login_id = input("아이디를 입력해주세요 : ")
-login_pw = input("비밀번호를 입력해주세요 : ")
 
-for user in user_list:
-    if user["아이디"] == login_id:
-        flag = 1
-        if user["비밀번호"] == login_pw:
-            print(f"{user["이름"]}님! 안녕하세요")
+while True:
+    login_id = input("아이디를 입력해주세요 : ")
+    login_pw = input("비밀번호를 입력해주세요 : ")
 
-            # 게시판 시작
-            while True:
-                comm = input("게시판 명령어 입력 [설명:help 입력] : ")
-
-                if comm == "help":
-                    list_help()
-                elif comm == "add":
-                    add_board()
-                elif comm == "update":
-                    update_Board()
-                elif comm == "delete":
-                    delete_Board()
-                elif comm == "detail":
-                    detail_Board()
-                elif comm == "list":
-                    list_board()
-                elif comm == "exit":
-                    print("게시물 프로그램 종료")
-                    break
-        else:
-            print("비밀번호를 틀렸습니다.")
-if flag == 0:
-    print("없는 아이디입니다.")
+    for user in user_list:
+        if user["아이디"] == login_id:
+            flag = 1
+            if user["비밀번호"] == login_pw:
+                print(f"{user["이름"]}님! 안녕하세요")
+                start_board()
+                break
+            else:
+                print("비밀번호를 틀렸습니다.")
+    if user["아이디"] not in [login_id]:
+        print("없는 아이디입니다.")
+        continue
