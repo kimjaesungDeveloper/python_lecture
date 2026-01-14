@@ -223,15 +223,6 @@ print("=========================================================================
 
 # 회원리스트를 이용해 로그인 기능 만들기
 
-user1 = {"아이디": "hong123", "비밀번호": "1234", "이름": "홍길동"}
-user2 = {"아이디": "sony7", "비밀번호": "7777", "이름": "손흥민"}
-user3 = {"아이디": "ryu99", "비밀번호": "9999", "이름": "류현진"}
-
-user_list = [user1, user2, user3]
-
-login_id = input("아이디를 입력해주세요 : ")
-login_pw = input("비밀번호를 입력해주세요 : ")
-
 # 아이디와 비밀번호를 모두 올바르게 입력하면 이름으로
 # 1. '???님 반갑습니다!' 출력
 
@@ -300,7 +291,68 @@ login_pw = input("비밀번호를 입력해주세요 : ")
 # =================================
 
 board_list = []
-flag = 0
+
+
+# 2026-01-14 게시글 정보 함수 추가
+def get_board_info_num():
+    num = int(input("게시물 번호를 입력 : "))
+
+    target = None
+
+    for board in board_list:
+        if board["번호"] == num:
+            target = board
+            break
+
+    return target
+
+
+# 2026-01-14 상세정보 추가
+def detail_Board():
+    board = get_board_info_num()
+    print("==========  게시물 목록  ========")
+    print(f"번호 :{board["번호"]}  ")
+    print(f"제목 :{board["제목"]}  ")
+    print(f"내용 :{board["내용"]}  ")
+    print(f"작성자 :{board["작성자"]}  ")
+    print("=================================")
+    print("")
+    print("----- 댓글 -----")
+
+
+# 2026-01-14 삭제 추가
+def delete_Board():
+    board = get_board_info_num()
+    if board != None:
+        board_list.remove(board)
+        print("게시물 삭제가 완료되었습니다.")
+    else:
+        print("없는 게시물 입니다.")
+
+
+# 2026-01-14 업데이트 추가
+def update_Board():
+    num = int(input("수정 할 게시글 번호 입력 : "))
+    global board_list
+    for board in board_list:
+        if board["번호"] == int(num):
+            up_title = input("제목을 수정 해주세요 : ")
+            up_body = input("내용을 수정 해주세요 : ")
+
+            board["제목"] = up_title
+            board["내용"] = up_body
+
+            print("수정이 완료되었습니다.")
+        else:
+            print("없는 게시물 입니다.")
+
+
+def list_help():
+    print("add : 게시물 추가")
+    print("list : 게시물 목록 조회")
+    print("update : 게시물 수정")
+    print("remove : 게시물 삭제")
+    print("exit : 게시물 프로그램 종료")
 
 
 def add_board():
@@ -324,15 +376,27 @@ def list_board():
         print("게시물 출력.")
         print("==========  게시물 목록  =========")
         for i, board in enumerate(board_list):
-            ty = board
-            print(board.items())
             # print(f"번호 : {i+1}\t", end="")
             # print(f"제목 : {board["제목"]} \n내용 : {board["내용"]}")
             print(
-                f"번호 : {board["번호"]} 제목 : {board["제목"]} 작성자 : {board["작성자"]}"
+                f"번호 : {board["번호"]} 제목 : {board["제목"]} 작성자 : {board["작성자"]}\n 내용 : {board["내용"]}"
             )
         print("=================================")
 
+
+# 유저 정보
+user1 = {"아이디": "hong123", "비밀번호": "1234", "이름": "홍길동"}
+user2 = {"아이디": "sony7", "비밀번호": "7777", "이름": "손흥민"}
+user3 = {"아이디": "ryu99", "비밀번호": "9999", "이름": "류현진"}
+
+# 유저 딕셔너리 리스트에 넣기
+user_list = [user1, user2, user3]
+
+# 프로그램 로그인 bool
+flag = 1
+
+login_id = input("아이디를 입력해주세요 : ")
+login_pw = input("비밀번호를 입력해주세요 : ")
 
 for user in user_list:
     if user["아이디"] == login_id:
@@ -342,16 +406,18 @@ for user in user_list:
 
             # 게시판 시작
             while True:
-                comm = input("게시판 명령어 입력 : ")
+                comm = input("게시판 명령어 입력 [설명:help 입력] : ")
 
                 if comm == "help":
-                    print("add : 게시물 추가")
-                    print("list : 게시물 목록 조회")
-                    print("update : 게시물 수정")
-                    print("remove : 게시물 삭제")
-                    print("exit : 게시물 프로그램 종료")
+                    list_help()
                 elif comm == "add":
                     add_board()
+                elif comm == "update":
+                    update_Board()
+                elif comm == "delete":
+                    delete_Board()
+                elif comm == "detail":
+                    detail_Board()
                 elif comm == "list":
                     list_board()
                 elif comm == "exit":
