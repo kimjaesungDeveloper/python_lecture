@@ -94,25 +94,143 @@
 # Jin.Hi()
 
 
+# class Person:
+#     def __init__(self, name, age):
+#         self.hello = "안녕하세요"
+#         self.name = name
+#         self.age = age
+#         self.성별 = "남"
+
+#     def introduce(self):
+#         print(
+#             f"{self.hello} 저는 {self.age}살 이고, 성별은 {self.성별}, 이름은 {self.name}입니다."
+#         )
+
+
+# Jin = Person("진", 22)
+# Jin.introduce()
+
+# print(f"이름 : {Jin.name}")
+# print(f"나이 : {Jin.age}")
+# print(f"성별 : {Jin.성별}")
+
+# Paul = Person("폴", 32)
+# Paul.introduce()
+
+# 비공개 속성(private attribute)
+#    비공개 속성으로 할 경우 클래스 외부에서는 접근 불가능
+
+
+# class Person:  # 비공개 속성 => 클래스 외부에서 접근이 불가, 클래스 내부에서만 사용가능 => private attribute
+#     def __init__(self, name, age, weight):
+#         self.hello = "안녕하세요"
+#         self.name = name
+#         self.age = age
+#         # self.weight = weight
+#         self.__weight = weight  # 변수 앞에 `__`를 붙혀서 비공개 속성으로 변경
+
+
+# Jin = Person("진", 22, 72)
+# print(Jin.name)
+# print(Jin.age)
+# print(Jin.weight)
+
+
+# 문제 1
+class Warrior:
+    def __init__(self, hp, mp, attack_point):
+        self.hp = hp
+        self.mp = mp
+        self.attack_point = attack_point
+
+    def attack(self):
+        print("공격!")
+
+
+x = Warrior(1000, 500, 30)
+
+print(x.hp, x.mp, x.attack_point)
+
+x.attack()
+# 출력 : 공격!
+
+
+## 인스턴스, 스태틱(정적), 클래스 메서드
+
+print("== 인스턴스 메서드 ==")
+
+
+# 인스턴스 메서드
 class Person:
-    def __init__(self, name, age):
-        self.hello = "안녕하세요"
-        self.name = name
-        self.age = age
-        self.성별 = "남"
-
-    def introduce(self):
-        print(
-            f"{self.hello} 저는 {self.age}살 이고, 성별은 {self.성별}, 이름은 {self.name}입니다."
-        )
+    def hi(self):
+        print("hi")
 
 
-Jin = Person("진", 22)
-Jin.introduce()
+Jin = Person()
+Jin.hi()
 
-print(f"이름 : {Jin.name}")
-print(f"나이 : {Jin.age}")
-print(f"성별 : {Jin.성별}")
+print("== 스태틱(정적) 메서드 ==")
 
-Paul = Person("폴", 32)
-Paul.introduce()
+
+# 정적 메서드 => 첫 번째 매개변수로 self는 필요없다.
+#   주로 class 내부에서 self 사용없이 쓸 때
+class Calc:
+    @staticmethod  # 스태틱(정적) 메서드
+    def add(a, b):
+        print(a + b)
+
+
+Calc.add(10, 20)  # 클래스에서 바로 메서드(함수) 호출(실행)이 가능하다.
+
+print("== 클래스 메서드 ==")
+
+
+# 클래스 메서드
+#   주로 class 내부에서 self 인자 사용없이 따로 사용할 때
+class Person2:
+    count = 0  # 클래스 속성
+
+    def __init__(self):
+        Person2.count += 1
+
+    @classmethod
+    def print_count(cls):  # 클래스메서드
+        print(f"사람이 총 {cls.count}명 있습니다.")  # cls로 클래스 속성에 접근한다.
+
+
+Person2.print_count()
+Jin2 = Person2()
+
+Person2.print_count()
+Jin2 = Person2()
+
+Person2.print_count()
+
+
+# ==========================================================================
+# 개별 class 이론 추가 내용
+
+# @classmethod 사용 (클래스 자체 호출, 클래스 변수 접근)
+# @classmethod 데코레이터를 사용하고 첫 번째 인자를 cls (관례)로 받으면,
+# 바인딩되어 인스턴스 없이도 호출 가능
+# class MyClass:
+#     @classmethod
+#     def my_class_method(cls, arg):
+#         print(f"클래스 메서드 호출됨. cls: {cls}, 인자: {arg}")
+
+
+# # 호출 방법: 클래스명.메서드명()
+# MyClass.my_class_method("Hello")
+
+
+# 클래스 이름으로 직접 호출 (self가 없는 메서드)
+# 메서드 정의 시 self를 인자로 받지 않도록 만들고 클래스 이름으로 직접 호출하면
+# self 없이 사용 가능하지만, 이는 일반적인 인스턴스 메서드 호출 방식이 아닙니다.
+# class Car:
+#     @staticmethod
+#     def color(blue):
+#         print("color : blue")
+
+
+# sonata = Car()
+# sonata.color("블루")
