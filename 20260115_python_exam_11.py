@@ -161,6 +161,7 @@ print("== 인스턴스 메서드 ==")
 
 
 # 인스턴스 메서드
+#   그냥 정의 => 첫 번째 인자에 self => 호출은 인스턴스를 통해서 호출
 class Person:
     def hi(self):
         print("hi")
@@ -174,6 +175,9 @@ print("== 스태틱(정적) 메서드 ==")
 
 # 정적 메서드 => 첫 번째 매개변수로 self는 필요없다.
 #   주로 class 내부에서 self 사용없이 쓸 때
+#   @staticmethod => 첫 번째 인자x => 클래스 또는 인스턴스를 통해서 호출
+
+
 class Calc:
     @staticmethod  # 스태틱(정적) 메서드
     def add(a, b):
@@ -187,6 +191,7 @@ print("== 클래스 메서드 ==")
 
 # 클래스 메서드
 #   주로 class 내부에서 self 인자 사용없이 따로 사용할 때
+#   @classmethod => 첫 번째 인자에 cls => 호출은 클래스 또는 인스턴스를 통해서 호출
 class Person2:
     count = 0  # 클래스 속성
 
@@ -206,6 +211,50 @@ Jin2 = Person2()
 
 Person2.print_count()
 
+
+## 클래스 상속 (부모,자식 간 오버로딩 및 super() 설명)
+# 상속 => 물려받다, 물려받은 기능을 유치한채 다른 기능을 추가
+# 물려주는 클래스 => 부모클래스
+# 물려받는 클래스 => 자식클래스
+
+
+# 부모클래스
+class Person:
+    def hi(self):
+        print("하이")
+
+    def hello(self):
+        print("헬로")
+
+
+# 자식클래스 => 자식클래스의 메서드(함수) 갯수는 부모클래스보다 같거나 많다.
+class Student(Person):
+    def study(self):
+        print("공부")
+
+    def hello(self):  # 메서드 오버라이딩
+        print("안녕~~")
+
+    def hello2(self):
+        super().hello()
+
+    # hello2 함수에 super().hello() 호출하게 되면 부모클래스의 hello 메서드가 호출이 된다.
+    # Student 클래스 => 만들어진 객체는 2개의 hello 메서드를 현재 가지고 있는 상태.
+
+
+# 자식 클래스가 부모 클래스의 메서드를 가져다 쓸수 있다
+Jin = Student()
+Jin.hi()
+Jin.hello()
+Jin.study()
+Jin.hello2()
+
+# 부모 클래스는 자식의 클래스 내 메서드를 사용 할수 없다. (상속 받은게 없기에)
+print("=======")
+Paul = Person()
+Paul.hi()
+Paul.hello()
+Paul.study()
 
 # ==========================================================================
 # 개별 class 이론 추가 내용
