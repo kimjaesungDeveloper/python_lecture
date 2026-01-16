@@ -30,7 +30,6 @@
 #     def hello(self):
 #         print("안녕하세요")
 
-
 # Jin = Person()  # Person의 인스턴스를 생성해서 변수 Jin에 할당하겠다.
 # # 즉 객체를 만들었다라는 의미.
 # Jin.hello()

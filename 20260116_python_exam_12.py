@@ -60,3 +60,30 @@ except Exception as error:
 # Exception => 모든 에러의 기본이 되는 클래스
 # 모든 에러에 대한 확인은 가능하다.
 # 서로 다른상황에 대한 처리가 필요한 경우도 존재한다.
+
+
+# Exception 예외종류 및 설명
+
+"""
+1. NameError : 정의 되지 않은 변수를 호출 할 떄   ( i =10 -> print( j ))
+2. IndexError : 이미 정의된 리스트의 index 범위를 넘겨서 접근할 때 
+3. ValueError : 변환 할수 없는 문자나 숫자를 변환하려고 할 때
+4. FileNotFoundError: 존재하지 않는 파일을 호출 할때
+5. ZeroDivisionError: 0으로 숫자를 나누려고 할 때
+"""
+
+## Module 모듈  설명
+
+# 모듈 => 코드들이 작성되어 있는 하나의 파이썬 파일
+# 변수, 함수, 클래스 등등.. 정의 되어 있을 수 있다.
+
+# 대표적인 모듈 중 하나 : random
+import random
+
+menu = ["김밥", "짜장면", "떡볶이", "치킨"]
+print(random.choice(menu))  # import한 random 모듈의 choice라는 함수를 사용
+# 출력이 매번 달라지는 결과를 볼 수 있다.
+
+# 하나의 파이썬 파일을 모듈
+# 그런 모듈이 여러개 모인것 => 패키지
+# 패키지는 하나의 폴더 => 그 안에 여러 모듈들이 존재하는 형태
