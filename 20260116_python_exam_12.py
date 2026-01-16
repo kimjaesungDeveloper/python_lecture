@@ -203,3 +203,31 @@ print(items_lower)
 print("모든 모델명 중에 02번 제품만 뽑느데 뒤에 (new)라는 문장을 붙힌다.")
 items_new = [r + "_(new)" for r in items if r.endswith("02")]
 print(items_new)
+
+
+# if문 중복도 가능 하다 [표현식 + if-else if-else 가능]
+
+## 이중 for문
+
+#  for문 2개 사용
+# 리스트 컴프리헨션을 이용하면 for문을 2개 사용함으로써
+# 중첩 for문의 효과를 줄 수 있습니다.
+
+dual_list = [(i, j) for i in range(2) for j in range(3)]
+
+print(dual_list)
+
+# res = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]
+
+# 집합 컴프리헨션
+# 리스트 컴프리헨션은 대괄호로 둘러쌓고 안에 코드를 입력하게 됩니다.
+# 그런데 대괄호 대신에 중괄호 "{" "}"로 둘러쌓게 되면 집합
+# 컴프리헨션(Set Comprehension)가 됩니다.
+set_comprehen = {i for i in range(5)}
+print(set_comprehen)
+
+# 딕셔너리 컴프리헨션
+# 이때, 딕셔너리의 형식에 맞게 키(key)와 값(value)을 콜론(":")을 사용하면
+# 딕셔너리 컴프리헨션(Dictionary Comprehension)
+dic_comprehen = {i: i for i in range(5)}
+print(dic_comprehen)
