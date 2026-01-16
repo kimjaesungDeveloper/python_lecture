@@ -1,4 +1,4 @@
-## 2026-01-13 python lecture
+## 2026-01-15 python lecture
 
 # class - 속성 설명 및 정의
 # 파이썬 => 객체지향 프로그래밍 언어(OOP)
