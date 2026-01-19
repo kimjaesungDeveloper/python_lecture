@@ -140,6 +140,10 @@ hero.y = size[1] - hero.height - 100
 
 hero.move = 15
 k = 0
+left_move = False
+right_move = False
+up_move = False
+down_move = False
 # 4.이벤트
 system_exit = 0
 while system_exit == 0:
@@ -152,26 +156,44 @@ while system_exit == 0:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 print("왼쪽 키 눌림")
-                hero.x -= hero.move
+                left_move = True
             if event.key == pygame.K_RIGHT:
                 print("오른쪽 키 눌림")
-                hero.x += hero.move
+                right_move = True
             if event.key == pygame.K_DOWN:
                 print("아래쪽 키 눌림")
-                hero.y += hero.move
+                down_move = True
             if event.key == pygame.K_UP:
                 print("위쪽 키 눌림")
-                hero.y -= hero.move
+                up_move = True
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 print("왼쪽 키 떼짐")
+                left_move = False
             if event.key == pygame.K_RIGHT:
                 print("오른쪽 키 떼짐")
+                right_move = False
             if event.key == pygame.K_UP:
                 print("위로 키 떼짐")
+                up_move = False
             if event.key == pygame.K_DOWN:
                 print("아래로 키 떼짐")
+                down_move = False
+
+    if left_move == True:
+        if (size[0] - size[0]) <= hero.x:
+            hero.x -= hero.move
+    elif right_move == True:
+        if (size[0] - hero.img.width) >= hero.x:
+            hero.x += hero.move
+    elif up_move == True:
+        if (size[1] - size[1]) <= hero.y:
+            hero.y -= hero.move
+    elif down_move == True:
+        if (size[1] - hero.img.height) >= hero.y:
+            hero.y += hero.move
+
     # 변화(입력에 따른 변화, 시간에 따른 변화)
     k += 1
 
