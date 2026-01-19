@@ -144,6 +144,13 @@ left_move = False
 right_move = False
 up_move = False
 down_move = False
+
+missile = Img_Object()
+missile.add_img("D:\KJS\PYTHON\image/missile.jpg")
+missile.change_size(40, 40)
+missile.x = round(size[0] / 2) - round(missile.width / 2)
+missile.y = size[1] - missile.height - 200
+
 # 4.이벤트
 system_exit = 0
 while system_exit == 0:
@@ -166,6 +173,9 @@ while system_exit == 0:
             if event.key == pygame.K_UP:
                 print("위쪽 키 눌림")
                 up_move = True
+            if event.key == pygame.K_SPACE:
+                print("스페이스바 눌림")
+                missile.show_img()
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
@@ -180,6 +190,9 @@ while system_exit == 0:
             if event.key == pygame.K_DOWN:
                 print("아래로 키 떼짐")
                 down_move = False
+            if event.key == pygame.K_SPACE:
+                print("스페이스바 키 떼짐")
+                pygame.display.flip()
 
     if left_move == True:
         if (size[0] - size[0]) <= hero.x:
@@ -200,6 +213,7 @@ while system_exit == 0:
     # 전사작업(그리기)
     screen.fill(black_color)
     hero.show_img()
+    # missile.show_img()
     # 업데이트
     pygame.display.flip()
 # 종료
