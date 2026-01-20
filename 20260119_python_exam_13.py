@@ -1,4 +1,4 @@
-## 2026-01-16 python lecture
+## 2026-01-19 python lecture
 
 # pygame
 import pygame
