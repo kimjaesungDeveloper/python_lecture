@@ -3,6 +3,10 @@
 import numpy as np
 
 """
+** Numpy 참고 사이트
+https://numpy.org/doc/stable/user/absolute_beginners.html
+**
+
 command 창에 pip install numpy 설치 후 사용
 
 numpy 란 - 다차원 배열을 만드는데 빠르거 효율적인 방법 제공
@@ -212,3 +216,30 @@ arr1[[True, False, True, False]]
 # print(arr1[[True, False, True, False]])
 arr4 = arr1 > 2
 print(arr4)
+
+# ==========================================================================================
+
+# -10 ~10 사이의 정수로 (3,4) 모양의 배열을 만들고 arr1에 저장
+# 아래와 같은 2차원 배열을 만들고 arr2에 저장
+# 1,2,3,4
+# 5,6,7,8
+# 9,10,11,12
+# 13,14,15,16
+arr1 = np.array([3, 4])
+arr2 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
+
+# 1. 각 배열의 차원, 모양, 원소의 갯수를 확인
+
+arr_size1 = arr1.size
+arr_size2 = arr2.size
+print(f"1 : {arr_size1} 2 : {arr_size2}")
+# 2. arr1에서 행은 모두 출력하고 열은 첫번째, 세번째만 출력
+out_arr = arr2[::, [0, 2]]
+print(out_arr)
+# 3. arr2에서 아래처럼 나오게 인덱싱해주세요
+# [6, 7]
+# [10, 11]
+out_arr1 = arr2[[1, 2], 1:3]
+print(out_arr1)
+
+# 4. arr1에서 음수만 출력
