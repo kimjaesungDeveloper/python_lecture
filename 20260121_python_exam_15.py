@@ -212,7 +212,7 @@ class Img_Object:
 
 
 hero = Img_Object()
-hero.add_img("C:/Users/admin/Desktop/pyhon_25_12/pygame/hero.jpg")
+hero.add_img("D:/KJS/PYTHON/image/airplane.jpg")
 hero.change_size(80, 80)
 hero.x = round(size[0] / 2) - round(hero.width / 2)
 hero.y = size[1] - hero.height - 100
@@ -257,7 +257,7 @@ while system_exit == 0:
 
     if space_on == True and k % 6 == 0:
         missile = Img_Object()  # 미사일 객체 생성 => 위 if문에 조건이 True일 때
-        missile.add_img("C:/Users/admin/Desktop/pyhon_25_12/pygame/missile.png")
+        missile.add_img("D:\KJS\PYTHON\image\missile.jpg")
         missile.change_size(45, 50)
 
         # 미사일 위치 설정
@@ -282,7 +282,7 @@ while system_exit == 0:
         random.random() >= 0.98
     ):  # 함수가 반환한 난수가 0.98보다 크거나 같은지 확인. 약 2%의 확률로 조건이 참이 된다
         enemy = Img_Object()
-        enemy.add_img("C:/Users/admin/Desktop/pyhon_25_12/pygame/enemy.png")
+        enemy.add_img("D:\KJS\PYTHON\image\germ.jpg")
         enemy.change_size(35, 35)
         # enemy 의 x좌표를 화면 가로범위 내의 랜덤한 위치로 설정, 주인공의 중앙을 기준으로
         # 한 범위내에서 랜덤한 위치를 선택
@@ -353,3 +353,29 @@ while system_exit == 0:
     pygame.display.flip()
 # 종료
 pygame.quit()
+
+
+"""
+기능추가?
+- 게임 실행 시에 특정 키보드를 눌러야 게임 시작
+- 게임 종료 상황
+  - r키를 누른다 : 게임 재시작
+  - q 키를 누른다 : 게임 종료
+
+enemy
+  - 다른 enemy 객체 생성(게임 시작 후 설정 해둔 시간마다)
+  - boss
+
+패턴
+- 현재 일정한 속도 => 일정 시간 또는 다른 enemy 객체를 생성할 때 속도가 빨라진다던가?
+- ex) boss의 이동속도는 굉장히 빠르거나 or 미사일을 여러번 맞춰야된다거나
+
+점수표시
+시간표시
+배경화면
+hero의 이동범위
+  - 현재 => 좌우로만 이동이 가능
+  - 추가 => 상하 이동 추가
+bgm
+효과음
+"""
